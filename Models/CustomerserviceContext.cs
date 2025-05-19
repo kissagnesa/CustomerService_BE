@@ -36,9 +36,9 @@ public partial class CustomerserviceContext : DbContext
             entity.Property(e => e.AgentId)
                 .HasColumnType("int(11)")
                 .HasColumnName("agent_id");
-            entity.Property(e => e.Name)
+            entity.Property(e => e.AgentName)
                 .HasMaxLength(100)
-                .HasColumnName("name");
+                .HasColumnName("agentName");
         });
 
         modelBuilder.Entity<Call>(entity =>
@@ -92,9 +92,9 @@ public partial class CustomerserviceContext : DbContext
             entity.Property(e => e.CustomerId)
                 .HasColumnType("int(11)")
                 .HasColumnName("customer_id");
-            entity.Property(e => e.Name)
+            entity.Property(e => e.CustomerName)
                 .HasMaxLength(100)
-                .HasColumnName("name");
+                .HasColumnName("customerName");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -53,7 +53,7 @@ namespace Backend.Controllers
                 using (var cx = new CustomerserviceContext())
                 {
                     var agent = new Agent();
-                    agent.Name = name;
+                    agent.AgentName = name;
                     cx.Agents.Add(agent);
                     cx.SaveChanges();
                     return Ok("Új kolléga hozzáadása sikeres!");
@@ -75,7 +75,7 @@ namespace Backend.Controllers
                     var agent = cx.Agents.FirstOrDefault(x => x.AgentId == id);
                     if (agent == null)
                         return NotFound("Nincs ilyen azonosítójú kolléga!");
-                    agent.Name = name;
+                    agent.AgentName = name;
                     cx.SaveChanges();
                     return Ok("Kolléga módosítása sikeres!");
                 }

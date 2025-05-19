@@ -56,7 +56,7 @@ namespace Backend.Controllers
                 using (var cx = new CustomerserviceContext())
                 {
                     var customer = new Customer();
-                    customer.Name = name;
+                    customer.CustomerName = name;
                     cx.Customers.Add(customer);
                     await cx.SaveChangesAsync();
                     return Ok("Új ügyfél hozzáadása sikeres!");
@@ -75,9 +75,10 @@ namespace Backend.Controllers
             {
                 using (var cx = new CustomerserviceContext())
                 {
-                    var response=cx.Customers.FirstOrDefault(x => x.CustomerId == id);
+                    var response=cx.Customers.FirstOrDefault(x => x.CustomerId == customer.CustomerId);
                     if (response!=null)
-                    { cx.Customers.Update(customer);
+                    { 
+                        cx.Customers.Update(customer);
                         await cx.SaveChangesAsync();
                         return Ok("Ügyfél módosítása sikeresen megtörtént!");
                     }
