@@ -31,5 +31,22 @@ namespace Backend.Controllers
                 return StatusCode(400, "Hiba történt a hívások lekérdezése során.");
             }
         }
+
+        [HttpGet("AllCalls")]
+        public async Task<ActionResult<IEnumerable<Call>>> GetAll()
+        {
+            try
+            {
+                using (var cx = new CustomerserviceContext())
+                {
+                    var calls = await cx.Calls.ToListAsync();
+                    return Ok(calls);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Hiba történt a hívások lekérdezése során.");
+            }
+        }
     }
 }
